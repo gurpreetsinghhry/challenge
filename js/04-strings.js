@@ -142,3 +142,85 @@ let convertFirstSixCharacter = (str)=> {
     let upper = str.slice(0,6 + arr.length).toUpperCase();
     console.log(upper + str.slice(6+arr.length));
 }
+
+
+// Advance
+// 1. Given an input string S and two characters c1 and c2, you need to replace every occurrence of 
+// character c1 with character c2 in the given string
+let stringReplace = (str, c1, c2) => {
+   let arr = str.split("");
+   for (let i = 0 ; i < arr.length; i++){
+       if (arr[i]== c1){
+           arr[i]= c2;
+       } else if (arr[i]==c2){
+           arr[i]=c1;
+       }
+   }
+   console.log(arr.join(""));
+};
+
+
+// 2. Given an input string S that contains multiple words, you need to remove all the spaces 
+// present in the input string. There can be multiple spaces present after any word
+let removeSpaces = (S)=> {
+    let arr = S.trim().split(" ").join("");
+    console.log(arr);
+}
+
+
+// 3. A program that counts the value of each character and prints the most repeated character?
+// gurpreet
+let mostOccuringCharacter = (str)=> {
+    let obj = {};
+    for (let i=0; i< str.length; i++){
+        if (str[i] in obj){
+
+            if (str[i]!=" "){
+                obj[str[i]]=Number(obj[str[i]])+ 1;
+            }
+        } else {
+            
+            if (str[i]!=" "){
+                obj[str[i]]=1;
+            }
+        }
+    }
+    let arr = [0];
+    let newStr = "";
+    for (let key in obj){
+        if (obj[key]>arr[0]){
+            arr[0]= obj[key];
+            newStr = key;
+        }
+    }
+    // console.log(arr);
+    console.log("Character "+ newStr+ " occurs: "+ arr + " times");
+}
+
+
+// 4. Write a program to toggle case of each character of the string
+//    "good afternoon" (example: "skillsafari" ⇒ "sKiLlSaFaRi" )
+let toggleCase = (str) => {
+    let newStr="";
+    for(let i=0; i< str.length; i++){
+        if (i%2==0){
+           newStr += str[i].toLowerCase();
+        } else {
+            newStr += str[i].toUpperCase();
+        }
+    }
+    console.log(newStr);
+}
+
+
+
+// 5. Given a string "how was your day?" and a word "how", write a program that removes the 
+// occurrence of the specified word from given sentence. 
+// ( input: string⇒"programming camp are amazing",word⇒ "programming"; output:" camp are amazing")
+let removeSpecificWord = (str, word) => {
+    let arr = str.split(" ");
+    if (arr.includes(word)){
+        arr.splice(arr.indexOf(word),1);
+    }
+    console.log(arr.join(" "));
+}
